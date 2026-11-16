@@ -12,7 +12,7 @@ A clean new tab that stays out of your way. By [aste2d](https://github.com/aste2
 
 需要 **Chrome 134 或更新版本**。目前通过 GitHub 分发，尚未上架 Chrome 应用商店。
 
-1. 打开 [Releases](https://github.com/aste2d/still-tab/releases/latest)，下载扩展 ZIP。改名前发布的 ZIP 仍叫 `astab-版本号.zip`。不需要安装 Node.js，也不需要编译。
+1. 打开 [Releases](https://github.com/aste2d/still-tab/releases/latest)，下载 `still-tab-版本号.zip`。不需要安装 Node.js，也不需要编译。
 2. 解压到一个准备长期保留的文件夹，例如文稿目录中的 `still-tab`。不要安装后移动或删除它。
 3. 在 Chrome 地址栏输入 `chrome://extensions`，打开右上角的**开发者模式**。
 4. 点击**加载已解压的扩展程序**，选择直接包含 `manifest.json` 的文件夹。
