@@ -4,7 +4,7 @@ A clean new tab that stays out of your way. By [aste2d](https://github.com/aste2
 
 清爽的 Chrome 新标签页：左侧整理打开的标签页，右侧搜索和书签，旁边放好待办、笔记和番茄钟。主页没有品牌标识、广告或多余文案。
 
-![Still Tab homepage](docs/01-home.jpg)
+![Still Tab homepage](docs/01-home.png)
 
 [下载 ZIP](https://github.com/aste2d/still-tab/releases/latest) · [反馈问题](https://github.com/aste2d/still-tab/issues) · [隐私政策](https://astab-privacy.poodle11215.chatgpt.site)
 
