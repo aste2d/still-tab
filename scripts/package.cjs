@@ -13,7 +13,7 @@ const files = ['manifest.json', 'index.html', 'style.css', 'enhancements.css', '
   'icons/mark.svg', 'icons/icon16.png', 'icons/icon32.png', 'icons/icon48.png', 'icons/icon128.png'];
 for (const file of files) if (!fs.existsSync(path.join(root, file))) throw new Error(`Missing release file: ${file}`);
 fs.mkdirSync(path.join(root, 'release'), { recursive: true });
-const target = path.join(root, 'release', `astab-${manifest.version}.zip`);
+const target = path.join(root, 'release', `still-tab-${manifest.version}.zip`);
 // Recreate the generated artifact so removed files cannot linger from an earlier build.
 if (fs.existsSync(target)) fs.unlinkSync(target);
 execFileSync('/usr/bin/zip', ['-X', '-q', target, ...files], { cwd: root });

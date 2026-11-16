@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Rename the extension to Still Tab and the GitHub repository to `still-tab`.
+- Show an empty state when Show All Bookmarks is enabled and all bookmarks are in the bookmarks bar.
+
 ## 2.1.3 — 2026-11-07
 
 - Remove the unintended yellow line above tab groups containing duplicate tabs.
