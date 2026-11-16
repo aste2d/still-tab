@@ -1,12 +1,14 @@
 # Changelog
 
-## Unreleased
+## 2.1.5 — 2026-11-17
 
 - Add sponsorship to settings and space the About link below the controls.
 - Hide the entire All Bookmarks section when its setting is off.
 - Default to Daily discovery, 20% surface depth, 0px blur and 50% background overlay.
 
 - Add an optional Buy me a coffee link to the About page.
+- Replace the README homepage screenshot.
+- Organize extension source and tests into separate directories.
 
 ## 2.1.4 — 2026-11-16
 
