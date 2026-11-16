@@ -137,3 +137,30 @@ test('show setting has an off default and unrelated updates preserve manual expa
   api.setAlwaysShow(false);
   assert.equal(ids.get('allBookmarks').open, false);
 });
+
+test('show setting reveals the empty section outside search and hides it again when disabled', async () => {
+  const { ids, tree, api } = await page();
+  tree[0].children[1].children = [];
+  await api.refresh();
+
+  const sources = ids.get('bookmarkRoots');
+  assert.equal(sources.hidden, true);
+  api.setAlwaysShow(true);
+  assert.equal(sources.hidden, false);
+  assert.equal(ids.get('allBookmarks').open, true);
+  assert.equal(ids.get('allBookmarksEmpty').hidden, false);
+  assert.equal(ids.get('allBookmarksEmpty').textContent, 'No bookmarks outside the bookmarks bar.');
+  assert.equal(links(ids.get('quickTabsList'))[0].href, 'https://example.com');
+
+  click(ids.get('bookmarkSearchToggle'));
+  ids.get('bookmarkSearch').value = 'example';
+  ids.get('bookmarkSearch').listeners.input();
+  assert.equal(sources.hidden, true);
+  api.setAlwaysShow(false);
+  api.setAlwaysShow(true);
+  assert.equal(sources.hidden, true);
+  click(ids.get('bookmarkSearchToggle'));
+  assert.equal(sources.hidden, false);
+  api.setAlwaysShow(false);
+  assert.equal(sources.hidden, true);
+});

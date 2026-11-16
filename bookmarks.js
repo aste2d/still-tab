@@ -106,12 +106,18 @@ globalThis.AstabBookmarks = (() => {
     return card;
   }
 
-  function renderAllBookmarks(sources, roots, query) {
+  function getSearchQuery() {
+    return document.getElementById('bookmarkSearch').value.trim().toLocaleLowerCase();
+  }
+
+  function renderAllBookmarks(query) {
+    const sources = document.getElementById('bookmarkRoots');
+    const roots = tree[0]?.children || [];
     const barIds = new Set(AstabCore.bookmarkBars(roots).map(node => node.id));
     const otherRoots = roots.filter(node => !barIds.has(node.id));
     const rootIds = new Set(otherRoots.map(node => node.id));
     const homeItems = otherRoots.flatMap(node => node.children || []);
-    sources.hidden = Boolean(query) || homeItems.length === 0;
+    sources.hidden = Boolean(query) || (!defaultExpanded && homeItems.length === 0);
     let disclosure = document.getElementById('allBookmarks');
     if (!disclosure) {
       disclosure = document.createElement('details');
@@ -129,7 +135,7 @@ globalThis.AstabBookmarks = (() => {
     renderedTree = tree; renderedAllFolder = allFolderId;
     const navigate = id => {
       allFolderId = id;
-      renderAllBookmarks(sources, tree[0]?.children || [], '');
+      renderAllBookmarks('');
       document.getElementById(id ? 'allBookmarkBreadcrumbsBack' : 'allBookmarksToggle')?.focus();
     };
     renderPath(document.getElementById('allBookmarkBreadcrumbs'), allFolderId, rootIds, 'all bookmarks', navigate);
@@ -137,13 +143,16 @@ globalThis.AstabBookmarks = (() => {
     document.getElementById('allBookmarksGrid').replaceChildren(...children.map(node=>createBookmarkCard(node,navigate)));
     const empty = document.getElementById('allBookmarksEmpty');
     empty.hidden = children.length > 0;
-    empty.textContent = 'This folder is empty.';
+    empty.textContent = allFolderId ? 'This folder is empty.' : 'No bookmarks outside the bookmarks bar.';
   }
   function setAlwaysShow(enabled) {
     if (defaultExpanded === Boolean(enabled)) return;
     defaultExpanded = Boolean(enabled);
     const disclosure = document.getElementById('allBookmarks');
-    if (disclosure) disclosure.open = defaultExpanded;
+    if (disclosure) {
+      disclosure.open = defaultExpanded;
+      renderAllBookmarks(getSearchQuery());
+    }
   }
 
   function render() {
@@ -153,7 +162,7 @@ globalThis.AstabBookmarks = (() => {
     const bars = AstabCore.bookmarkBars(roots);
     const barIds = new Set(bars.map(bar => bar.id));
     if (folderId && !isWithinRoots(folderId, barIds)) folderId = null;
-    const query = document.getElementById('bookmarkSearch').value.trim().toLocaleLowerCase();
+    const query = getSearchQuery();
     const children = query ? AstabCore.flattenBookmarks(roots).filter(node =>
       `${node.title} ${node.url} ${node.path}`.toLocaleLowerCase().includes(query)) :
       folderId ? byId.get(folderId).children || [] : bars.flatMap(bar => bar.children || []);
@@ -178,8 +187,7 @@ globalThis.AstabBookmarks = (() => {
     const empty = document.getElementById('bookmarkEmpty');
     empty.hidden = children.length > 0;
     empty.textContent = query ? 'No matching bookmarks. Try another word.' : 'This folder is empty. Add bookmarks in Chrome and they will appear here.';
-    const sources = document.getElementById('bookmarkRoots');
-    renderAllBookmarks(sources, roots, query);
+    renderAllBookmarks(query);
     document.getElementById('bookmarkStatus').textContent = '';
   }
 
