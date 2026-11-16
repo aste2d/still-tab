@@ -26,8 +26,8 @@
   --theme-accent-muted: color-mix(in srgb, var(--accent-amber) 18%, var(--warm-gray) 82%);
   --theme-accent-strong: color-mix(in srgb, var(--accent-amber) 72%, var(--ink) 28%);
   --theme-control-hover: color-mix(in srgb, var(--ink) 8%, transparent);
-  --custom-surface-opacity: 14%;
-  --custom-border-opacity: 14%;
+  --custom-surface-opacity: 20%;
+  --custom-border-opacity: 20%;
   --custom-badge-opacity: 4%;
   --custom-fallback-opacity: 5%;
   --floating-surface-opacity: clamp(82%, calc(var(--custom-surface-opacity) + 54%), 94%);
@@ -3185,7 +3185,7 @@ body::after {
     position: fixed;
     inset: 0;
     z-index: 0; /* 位于背景图之上 */
-    background-color: var(--bg-overlay-color, rgba(248, 245, 240, var(--bg-overlay-opacity, 0.2)));
+    background-color: var(--bg-overlay-color, rgba(248, 245, 240, var(--bg-overlay-opacity, 0.5)));
     backdrop-filter: blur(var(--bg-blur, 0px));
     -webkit-backdrop-filter: blur(var(--bg-blur, 0px));
     pointer-events: none;

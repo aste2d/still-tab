@@ -10,7 +10,16 @@ globalThis.AstabEnhancements = (() => {
     const about = document.createElement('a');
     about.href = 'about.html'; about.target = '_blank'; about.rel = 'noopener';
     about.className = 'theme-menu-action'; about.textContent = 'About';
-    document.getElementById('themeMenuPanel').append(about);
+    const links = document.createElement('div');
+    links.className = 'theme-menu-footer';
+    const support = document.createElement('a');
+    support.href = 'https://afdian.com/a/aste2d/plan';
+    support.target = '_blank';
+    support.rel = 'noopener noreferrer';
+    support.className = 'theme-menu-action';
+    support.textContent = 'Buy me a coffee ↗';
+    links.append(support, about);
+    document.getElementById('themeMenuPanel').append(links);
     renderThemeMenu();
     const toggle = document.getElementById('autoCloseExtras');
     const allToggle = document.getElementById('showAllBookmarks');

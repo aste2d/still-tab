@@ -117,7 +117,7 @@ globalThis.AstabBookmarks = (() => {
     const otherRoots = roots.filter(node => !barIds.has(node.id));
     const rootIds = new Set(otherRoots.map(node => node.id));
     const homeItems = otherRoots.flatMap(node => node.children || []);
-    sources.hidden = Boolean(query) || (!defaultExpanded && homeItems.length === 0);
+    sources.hidden = Boolean(query) || !defaultExpanded;
     let disclosure = document.getElementById('allBookmarks');
     if (!disclosure) {
       disclosure = document.createElement('details');

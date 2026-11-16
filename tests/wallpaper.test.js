@@ -11,7 +11,7 @@ async function page({ stored = {}, background = '', online = true, fail = false,
       addEventListener(name, fn) { this.listeners[name] = fn; }, replaceChildren() {}, append() {} });
     return elements.get(id);
   };
-  const data = { ...stored };
+  const data = { wallpaperPreferences: { source: 'forest', offset: 0 }, ...stored };
   let day = '2026-11-06';
   const context = vm.createContext({ Date, AbortSignal, console,
     themePreferences: { customBackground: background }, AstabCore: { localDay: () => day },
@@ -21,7 +21,7 @@ async function page({ stored = {}, background = '', online = true, fail = false,
       set: async patch => { if (saveFails && patch.wallpaperCache) throw Error('quota'); Object.assign(data, patch); } }, onChanged: { addListener() {} } } },
     navigator: { onLine: online, locks: { request: (_name, fn) => { const job = fn(); work.push(job); return job; } } },
     window: { addEventListener: (name, fn) => { events[name] = fn; } }, setInterval: fn => { events.day = fn; },
-    fetch: async (url, options) => { calls.push({ url, options }); if (fail) throw Error('network'); return { ok: true, blob: async () => ({ type: 'image/jpeg', size: 4000 }) }; },
+    fetch: async (url, options) => { calls.push({ url, options }); if (fail) throw Error('network'); return { ok: true, json: async () => [{ id: '1', width: 1920, height: 1080, url: 'https://unsplash.com/photos/example', author: 'Example' }], blob: async () => ({ type: 'image/jpeg', size: 4000 }) }; },
     TabOutBackgroundImage: { compressImageFileForStorage: async () => { if (decodeFails) throw Error('invalid image'); return 'data:image/webp;base64,new'; } },
   });
   for (const file of ['forest-library.js', 'wallpaper.js']) vm.runInContext(fs.readFileSync(path.join(__dirname, '../src', file), 'utf8'), context);
@@ -48,7 +48,7 @@ test('missing cache with a network failure falls back to custom or solid color',
   assert.match(custom.styles['--my-pure-bg'], /custom/);
   const plain = await page({ fail: true }); assert.equal(plain.styles['--my-pure-bg'], 'none');
 });
-test('forest library is default, changes on next photo and on the next calendar day', async () => {
+test('saved forest library changes on next photo and on the next calendar day', async () => {
   const p = await page(); const first = p.calls[0].url;
   assert.match(first, /^https:\/\/images\.unsplash\.com\//);
   assert.equal(p.calls[0].options.credentials, 'omit');
@@ -79,4 +79,11 @@ test('startup chooses cached wallpaper before any custom fallback can be painted
   assert.ok(backgrounds.length > 0);
   assert.ok(backgrounds.every(item=>item.value.includes('old')));
   assert.equal(p.calls.length,0);
+});
+
+test('fresh preferences default to daily discovery', async () => {
+  const p = await page({ stored: { wallpaperPreferences: undefined } });
+  assert.equal(p.element('wallpaperSource').value, 'daily');
+  assert.match(p.calls[0].url, /^https:\/\/picsum.photos\/v2\/list/);
+  assert.match(p.styles['--my-pure-bg'], /new/);
 });

@@ -831,9 +831,9 @@ function renderDeskTools() {
         <div class="theme-menu-section">
           <div class="theme-menu-row">
             <div class="theme-menu-label">Surface depth</div>
-            <div class="theme-range-value" id="themeTransparencyValue">14%</div>
+            <div class="theme-range-value" id="themeTransparencyValue">20%</div>
           </div>
-          <input class="theme-range" id="themeTransparencyRange" type="range" aria-label="Surface depth" min="2" max="60" step="1" value="14">
+          <input class="theme-range" id="themeTransparencyRange" type="range" aria-label="Surface depth" min="2" max="60" step="1" value="20">
 
           <div class="theme-menu-row" style="margin-top: 14px;">
             <div class="theme-menu-label">Bg Blur (模糊)</div>
@@ -843,9 +843,9 @@ function renderDeskTools() {
 
           <div class="theme-menu-row" style="margin-top: 14px;">
             <div class="theme-menu-label">Bg Overlay (遮罩)</div>
-            <div class="theme-range-value" id="themeOverlayValue">20%</div>
+            <div class="theme-range-value" id="themeOverlayValue">50%</div>
           </div>
-          <input class="theme-range" id="themeOverlayRange" type="range" min="0" max="100" step="1" value="20">
+          <input class="theme-range" id="themeOverlayRange" type="range" min="0" max="100" step="1" value="50">
         </div>
         <input type="file" id="themeBackgroundInput" accept="image/*" hidden>
       </div>`;
@@ -1771,7 +1771,7 @@ async function initializeDashboardRuntime() {
   // 读取我们自己的高斯模糊度和遮罩浓度
   const data = await chrome.storage.local.get(['customBgBlur', 'customBgOverlay']);
   const blur = data.customBgBlur !== undefined ? data.customBgBlur : 0;
-  const overlay = data.customBgOverlay !== undefined ? data.customBgOverlay : 20;
+  const overlay = data.customBgOverlay !== undefined ? data.customBgOverlay : 50;
 
   document.documentElement.style.setProperty('--bg-blur', `${blur}px`);
   document.documentElement.style.setProperty('--bg-overlay-opacity', overlay / 100);

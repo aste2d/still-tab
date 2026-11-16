@@ -1,7 +1,7 @@
 'use strict';
 
 globalThis.AstabWallpaper = (() => {
-  let preferences = { source: 'forest', offset: 0 };
+  let preferences = { source: 'daily', offset: 0 };
   let cache = null;
   let displayedPhoto = null;
   let requestGeneration = 0;
@@ -9,7 +9,7 @@ globalThis.AstabWallpaper = (() => {
   let prepared = false;
 
   function normalize(value = {}) {
-    return { source: ['custom', 'forest', 'daily'].includes(value.source) ? value.source : 'forest',
+    return { source: ['custom', 'forest', 'daily'].includes(value.source) ? value.source : 'daily',
       offset: Number.isSafeInteger(value.offset) && value.offset >= 0 ? value.offset : 0 };
   }
   function validCache(value) {

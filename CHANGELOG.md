@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add sponsorship to settings and space the About link below the controls.
+- Hide the entire All Bookmarks section when its setting is off.
+- Default to Daily discovery, 20% surface depth, 0px blur and 50% background overlay.
+
 - Add an optional Buy me a coffee link to the About page.
 
 ## 2.1.4 — 2026-11-16

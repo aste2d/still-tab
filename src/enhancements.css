@@ -90,3 +90,5 @@ body.card-dragging, body.card-dragging * { cursor: grabbing !important; }
 }
 
 .all-bookmarks-content { padding-top: 12px; }
+
+.theme-menu-footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--warm-gray); display: flex; flex-direction: column; gap: 8px; }

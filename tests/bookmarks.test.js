@@ -88,7 +88,8 @@ test('folders navigate within their own group with working parent and root retur
 });
 
 test('search spans both groups once and restores the expanded folder afterwards', async () => {
-  const { ids } = await page();
+  const { ids, api } = await page();
+  api.setAlwaysShow(true);
   click(links(ids.get('allBookmarksGrid'))[0]);
   click(ids.get('bookmarkSearchToggle'));
   ids.get('bookmarkSearch').value = 'example';
@@ -129,12 +130,15 @@ test('local and account roots retain Chrome order while every bookmarks bar is e
 
 test('show setting has an off default and unrelated updates preserve manual expansion', async () => {
   const { ids, api } = await page();
+  assert.equal(ids.get('bookmarkRoots').hidden, true);
   assert.equal(ids.get('allBookmarks').open, false);
   ids.get('allBookmarks').open = true;
   api.setAlwaysShow(false);
   assert.equal(ids.get('allBookmarks').open, true);
   api.setAlwaysShow(true);
+  assert.equal(ids.get('bookmarkRoots').hidden, false);
   api.setAlwaysShow(false);
+  assert.equal(ids.get('bookmarkRoots').hidden, true);
   assert.equal(ids.get('allBookmarks').open, false);
 });
 

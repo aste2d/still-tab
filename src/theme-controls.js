@@ -69,7 +69,7 @@ const THEMES = {
 let themePreferences = {
   themeId: 'sage',
   customBackground: '',
-  surfaceOpacity: 14,
+  surfaceOpacity: 20,
 };
 
 function normalizeThemePreferences(input) {
@@ -78,7 +78,7 @@ function normalizeThemePreferences(input) {
   const rawOpacity = Number(next.surfaceOpacity);
   const surfaceOpacity = Number.isFinite(rawOpacity)
     ? Math.min(60, Math.max(2, Math.round(rawOpacity)))
-    : 14;
+    : 20;
   return {
     themeId: themeId === 'custom' ? 'custom' : 'sage',
     colors: AstabPalette.normalize(next.colors, THEMES.sage.vars),
