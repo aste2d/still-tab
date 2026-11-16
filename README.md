@@ -74,10 +74,10 @@ npm run package
 
 The packaging script currently requires macOS or Linux with `/usr/bin/zip`. It writes `release/still-tab-VERSION.zip` using an explicit allowlist. Tests, screenshots and development files are excluded from the installable ZIP. Downloading a release does not require these development tools.
 
-`dashboard-runtime.js` preserves the original layout; `tabs-panel.js` and `notes-panel.js` handle their respective views. `bookmarks.js`, `wallpaper.js` and `pomodoro.js` implement the additional features. `forest-library.js` records the photo sources and credits.
+`src/dashboard-runtime.js` preserves the original layout; `src/tabs-panel.js` and `src/notes-panel.js` handle their respective views. `src/bookmarks.js`, `src/wallpaper.js` and `src/pomodoro.js` implement the additional features. `src/forest-library.js` records the photo sources and credits.
 
 ## Credits and license
 
-Based on [Tab Harbor](https://github.com/V-IOLE-T/tab-harbor), copyright © 2026 Han Zheng, under the included [MIT license](LICENSE). Changes and branding by aste2d. Public Sans and Libre Caslon Display retain their bundled SIL Open Font Licenses. Forest photographs are credited in `forest-library.js`; optional Daily discovery uses [Lorem Picsum](https://picsum.photos/).
+Based on [Tab Harbor](https://github.com/V-IOLE-T/tab-harbor), copyright © 2026 Han Zheng, under the included [MIT license](LICENSE). Changes and branding by aste2d. Public Sans and Libre Caslon Display retain their bundled SIL Open Font Licenses. Forest photographs are credited in `src/forest-library.js`; optional Daily discovery uses [Lorem Picsum](https://picsum.photos/).
 
 Bookmark navigation references the group-local folder interaction in [Bonjourr](https://github.com/victrme/Bonjourr/blob/master/src/scripts/features/links/folders.ts) and [Chromium’s bookmark guidance](https://www.chromium.org/user-experience/bookmarks/). No third-party source was copied for this feature.

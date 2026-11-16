@@ -6,7 +6,7 @@ const assert = require('node:assert/strict');
 const {
   clampTriggerTop,
   normalizeTriggerPosition,
-} = require('./deferred-trigger-position.js');
+} = require('../src/deferred-trigger-position.js');
 
 test('normalizeTriggerPosition keeps finite top values only', () => {
   assert.deepEqual(normalizeTriggerPosition({ top: 180 }), { top: 180 });

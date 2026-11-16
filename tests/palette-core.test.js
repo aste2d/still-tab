@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test');
 const assert=require('node:assert/strict');
-const palette=require('./palette-core.js');
+const palette=require('../src/palette-core.js');
 const fallback={'--paper':'#eef2eb','--card-bg':'#fafcf8','--ink':'#172018','--muted':'#7f8c81','--workspace-accent':'#4f7657'};
 test('custom palette retains each selected color and rejects invalid CSS values',()=>{
  const normalized=palette.normalize({background:'#112233',surface:'url(https://example.com)',accent:'#AABBCC'},fallback);

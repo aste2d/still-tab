@@ -6,7 +6,7 @@ const assert = require('node:assert/strict');
 const {
   createReorderedIds,
   reorderSubsetByIds,
-} = require('./list-order.js');
+} = require('../src/list-order.js');
 
 test('createReorderedIds moves dragged shortcut before target shortcut', () => {
   const reordered = createReorderedIds(

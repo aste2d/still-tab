@@ -8,7 +8,7 @@ const {
   createReorderedKeys,
   normalizeGroupOrderState,
   setPinEnabled,
-} = require('./group-order.js');
+} = require('../src/group-order.js');
 
 test('normalizeGroupOrderState keeps stable arrays and pin flag', () => {
   const state = normalizeGroupOrderState({

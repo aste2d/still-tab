@@ -1,7 +1,7 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const timer = require('./timer-core');
+const timer = require('../src/timer-core');
 
 test('timer resumes after reload and sleep using an absolute deadline', () => {
   const running = timer.transition(undefined, 'toggle', 10000);

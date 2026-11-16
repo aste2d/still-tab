@@ -26,8 +26,8 @@ async function worker({ tabs = [], enabled = true, storage = {} } = {}) {
     action: { setBadgeText: async () => {}, setBadgeBackgroundColor: async () => {} },
   };
   const context = vm.createContext({ chrome, console, Date });
-  context.importScripts = file => vm.runInContext(fs.readFileSync(path.join(__dirname, file), 'utf8'), context);
-  vm.runInContext(fs.readFileSync(path.join(__dirname, 'background.js'), 'utf8'), context);
+  context.importScripts = file => vm.runInContext(fs.readFileSync(path.join(__dirname, '../src', file), 'utf8'), context);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../src/background.js'), 'utf8'), context);
   const flush = () => vm.runInContext('stateQueue', context);
   await flush();
   return { chrome, data, removed, alarms, flush };

@@ -7,7 +7,7 @@ const {
   constrainImageDimensions,
   estimateDataUrlBytes,
   MAX_BACKGROUND_EDGE,
-} = require('./background-image.js');
+} = require('../src/background-image.js');
 
 test('constrainImageDimensions keeps smaller images unchanged', () => {
   assert.deepEqual(

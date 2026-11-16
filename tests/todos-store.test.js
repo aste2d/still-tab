@@ -11,7 +11,7 @@ const {
   normalizeTodos,
   searchTodos,
   splitTodos,
-} = require('./todos-store.js');
+} = require('../src/todos-store.js');
 
 test('createTodo adds a new active todo with title and description', () => {
   const todos = createTodo([], {

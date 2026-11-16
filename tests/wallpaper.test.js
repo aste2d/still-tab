@@ -24,7 +24,7 @@ async function page({ stored = {}, background = '', online = true, fail = false,
     fetch: async (url, options) => { calls.push({ url, options }); if (fail) throw Error('network'); return { ok: true, blob: async () => ({ type: 'image/jpeg', size: 4000 }) }; },
     TabOutBackgroundImage: { compressImageFileForStorage: async () => { if (decodeFails) throw Error('invalid image'); return 'data:image/webp;base64,new'; } },
   });
-  for (const file of ['forest-library.js', 'wallpaper.js']) vm.runInContext(fs.readFileSync(path.join(__dirname, file), 'utf8'), context);
+  for (const file of ['forest-library.js', 'wallpaper.js']) vm.runInContext(fs.readFileSync(path.join(__dirname, '../src', file), 'utf8'), context);
   const flush = async () => { for (let i = 0; i < 30; i++) await Promise.resolve(); await Promise.allSettled(work); };
   await context.AstabWallpaper.mount(); await flush();
   return { data, calls, styles, paints, context, events, element, flush, nextDay() { day = '2026-11-07'; events.day(); } };

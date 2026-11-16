@@ -1,7 +1,7 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const core = require('./desk-core');
+const core = require('../src/desk-core');
 const own = 'chrome-extension://test/index.html';
 
 test('Auto close extras includes every other new tab, across windows, and protects real pages', () => {

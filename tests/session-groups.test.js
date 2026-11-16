@@ -8,7 +8,7 @@ const {
   assignTabToSessionGroup,
   clearTabSessionGroup,
   pruneSessionGroups,
-} = require('./session-groups.js');
+} = require('../src/session-groups.js');
 
 test('addSessionGroup creates a named group and keeps names unique', () => {
   const initialState = { groups: [], assignments: {} };

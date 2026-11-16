@@ -4,16 +4,16 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-const appEntryJs = fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8');
-const runtimeJs = fs.readFileSync(path.join(__dirname, 'dashboard-runtime.js'), 'utf8');
-const themeJs = fs.readFileSync(path.join(__dirname, 'theme-controls.js'), 'utf8');
-const drawerJs = fs.readFileSync(path.join(__dirname, 'drawer-manager.js'), 'utf8');
-const helperJs = fs.readFileSync(path.join(__dirname, 'ui-helpers.js'), 'utf8');
-const appJs = [appEntryJs, runtimeJs, themeJs, drawerJs, helperJs, ...['tabs-panel.js', 'notes-panel.js'].map(file => fs.readFileSync(path.join(__dirname, file), 'utf8'))].join('\n');
+const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
+const appEntryJs = fs.readFileSync(path.join(__dirname, '../src/app.js'), 'utf8');
+const runtimeJs = fs.readFileSync(path.join(__dirname, '../src/dashboard-runtime.js'), 'utf8');
+const themeJs = fs.readFileSync(path.join(__dirname, '../src/theme-controls.js'), 'utf8');
+const drawerJs = fs.readFileSync(path.join(__dirname, '../src/drawer-manager.js'), 'utf8');
+const helperJs = fs.readFileSync(path.join(__dirname, '../src/ui-helpers.js'), 'utf8');
+const appJs = [appEntryJs, runtimeJs, themeJs, drawerJs, helperJs, ...['tabs-panel.js', 'notes-panel.js'].map(file => fs.readFileSync(path.join(__dirname, '../src', file), 'utf8'))].join('\n');
 
 test('move menu keeps hidden state until explicitly opened', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(
     css,
@@ -22,7 +22,7 @@ test('move menu keeps hidden state until explicitly opened', () => {
 });
 
 test('mission card allows move menu to overflow outside the card', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(
     css,
@@ -31,7 +31,7 @@ test('mission card allows move menu to overflow outside the card', () => {
 });
 
 test('mission card is raised above sibling cards while move menu is open', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(
     css,
@@ -63,7 +63,7 @@ test('index includes deferred drawer trigger and overlay', () => {
 });
 
 test('manifest keeps only permissions required by the shipped runtime', () => {
-  const manifest = fs.readFileSync(path.join(__dirname, 'manifest.json'), 'utf8');
+  const manifest = fs.readFileSync(path.join(__dirname, '../manifest.json'), 'utf8');
 
   assert.match(manifest, /"tabs"/);
   assert.match(manifest, /"storage"/);
@@ -73,7 +73,7 @@ test('manifest keeps only permissions required by the shipped runtime', () => {
 });
 
 test('homepage has no branding; attribution is in About', () => {
-  const about = fs.readFileSync(path.join(__dirname, 'about.html'), 'utf8');
+  const about = fs.readFileSync(path.join(__dirname, '../about.html'), 'utf8');
   assert.doesNotMatch(html, /footer-credit|icons\/mark|Stilltab|A little space/);
   assert.match(about, /github\.com\/aste2d/);
   assert.match(about, /Han Zheng/);
@@ -83,7 +83,7 @@ test('homepage has no branding; attribution is in About', () => {
 
 
 test('back-to-top button styles and behavior are wired up', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(css, /\.back-to-top\s*\{/);
   assert.match(css, /\.back-to-top\.visible\s*\{/);
@@ -95,8 +95,8 @@ test('back-to-top button styles and behavior are wired up', () => {
 });
 
 test('deferred drawer styles and behavior are wired up', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
-  const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
+  const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
 
   assert.match(css, /\.drawer-header-actions\s*\{/);
   assert.match(css, /\.drawer-icon-btn\s*\{/);
@@ -123,7 +123,7 @@ test('deferred drawer styles and behavior are wired up', () => {
 });
 
 test('theme menu styles and custom background layer are defined', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(css, /--page-custom-background:/);
   assert.match(css, /--custom-surface-opacity:/);
@@ -199,13 +199,13 @@ test('theme menu styles and custom background layer are defined', () => {
   assert.match(css, /\.todo-detail-card\s*\{[\s\S]*background:\s*color-mix\(in srgb, var\(--card-bg\) 96%, var\(--paper\) 4%\);/);
   assert.match(appJs, /compressImageFileForStorage/);
   assert.doesNotMatch(appJs, /readFileAsDataUrl/);
-  assert.match(html, /<script src="background-image\.js"><\/script>/);
-  assert.match(html, /<script src="theme-controls\.js"><\/script>/);
+  assert.match(html, /<script src="src\/background-image\.js"><\/script>/);
+  assert.match(html, /<script src="src\/theme-controls\.js"><\/script>/);
 });
 
 test('bookmark cards retain the original grid and links while supporting folders', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
-  const bookmarks = fs.readFileSync(path.join(__dirname, 'bookmarks.js'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
+  const bookmarks = fs.readFileSync(path.join(__dirname, '../src/bookmarks.js'), 'utf8');
   assert.match(css, /grid-template-columns:\s*repeat\(auto-fill, 76px\)/);
   assert.match(html, /id="quickTabsList"/);
   assert.match(html, /id="bookmarkBreadcrumbs"/);
@@ -215,7 +215,7 @@ test('bookmark cards retain the original grid and links while supporting folders
 });
 
 test('quick shortcuts support drag reordering with persisted order and drag preview styling', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(themeJs, /const\s*\{[\s\S]*reorderSubsetByIds:\s*themeReorderSubsetByIds,[\s\S]*\}\s*=\s*globalThis\.TabOutListOrder \|\| \{\};/);
   assert.match(themeJs, /class="quick-shortcut-card" data-shortcut-id="\$\{safeId\}"/);
@@ -260,7 +260,7 @@ test('quick shortcuts support drag reordering with persisted order and drag prev
 });
 
 test('collapsed drawer triggers use compact neutral frames with theme-ready tokens', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(css, /--drawer-trigger-surface:/);
   assert.match(css, /--drawer-trigger-border:/);
@@ -272,7 +272,7 @@ test('collapsed drawer triggers use compact neutral frames with theme-ready toke
 });
 
 test('saved and todo lists expose drag handles with drag-state styling', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(drawerJs, /class="drawer-reorder-handle"/);
   assert.match(appJs, /data-chip-drag-handle="tab"/);
@@ -309,7 +309,7 @@ test('todo trigger icon uses the checklist artwork', () => {
 });
 
 test('archive supports deleting single items and clearing all archived items', () => {
-  const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
 
   assert.match(drawerJs, /restore-deferred/);
   assert.match(appJs, /reopenSavedTab\(restored\.url\)/);
@@ -343,7 +343,7 @@ test('drawer and search controls expose stronger accessibility semantics', () =>
 });
 
 test('interactive controls keep button semantics and reduced-motion support', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(themeJs, /class="quick-shortcut-open" type="button"/);
   assert.match(themeJs, /class="quick-shortcut-remove" type="button"/);
@@ -355,7 +355,7 @@ test('interactive controls keep button semantics and reduced-motion support', ()
 });
 
 test('keyboard focus receives explicit visible treatment', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(css, /--focus-ring:/);
   assert.match(css, /:is\([\s\S]*\.quick-shortcut-open,[\s\S]*\.theme-option,[\s\S]*\.todo-main[\s\S]*\):focus-visible/);
@@ -364,7 +364,7 @@ test('keyboard focus receives explicit visible treatment', () => {
 });
 
 test('drawer tab hover and todo title typography stay aligned with theme system', () => {
-  const css = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../src/style.css'), 'utf8');
 
   assert.match(css, /--drawer-tab-idle:/);
   assert.match(css, /--drawer-tab-hover:/);

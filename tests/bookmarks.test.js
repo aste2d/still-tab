@@ -35,11 +35,11 @@ async function page(extraRoots = []) {
       { id: '12', title: 'Empty', children: [] },
     ] }, ...extraRoots,
   ] }];
-  const context = vm.createContext({ console, URL, setTimeout, clearTimeout, AstabCore: require('./desk-core.js'),
+  const context = vm.createContext({ console, URL, setTimeout, clearTimeout, AstabCore: require('../src/desk-core.js'),
     chrome: { runtime: { getURL: part => 'chrome-extension://test/' + part }, bookmarks: { getTree: async () => structuredClone(tree) } },
     document: { getElementById: id => ids.get(id) || null, createElement: element, createDocumentFragment: () => element('fragment') },
   });
-  vm.runInContext(fs.readFileSync(path.join(__dirname, 'bookmarks.js'), 'utf8'), context);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../src/bookmarks.js'), 'utf8'), context);
   await context.AstabBookmarks.refresh();
   context.AstabBookmarks.mount();
   return { ids, tree, api: context.AstabBookmarks };

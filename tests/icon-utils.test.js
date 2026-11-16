@@ -11,7 +11,7 @@ const {
   getGoogleFaviconUrl,
   getGroupIcon,
   getIconSources,
-} = require('./icon-utils.js');
+} = require('../src/icon-utils.js');
 
 test('icons use Chrome cache without sending URLs to an external service', () => {
   const iconData = getIconSources({

@@ -5,7 +5,7 @@ function controls(){
  const scope={addEventListener:(name,fn)=>{scopeEvents[name]=fn;},removeEventListener:name=>{delete scopeEvents[name];}};
  const button=action=>({innerHTML:action,textContent:'',dataset:{action},style:{minWidth:''},classList:{add(){},remove(){}},contains(target){return target===this;},getAttribute:()=>null,setAttribute(){},removeAttribute(){},getBoundingClientRect:()=>({width:100}),closest:()=>scope});
  const context=vm.createContext({document:{getElementById:()=>scope,addEventListener:(name,fn)=>{events[name]=fn;}},window:{addEventListener:(name,fn)=>{events[name]=fn;}},setTimeout:fn=>{timers.set(++id,fn);return id;},clearTimeout:id=>timers.delete(id)});
- vm.runInContext(fs.readFileSync(path.join(__dirname,'close-confirm.js'),'utf8'),context);
+ vm.runInContext(fs.readFileSync(path.join(__dirname, '../src/close-confirm.js'),'utf8'),context);
  return {api:context.AstabCloseConfirm,button,events,timers,scopeEvents};
 }
 test('group and all-tabs actions require two clicks on the same control',()=>{

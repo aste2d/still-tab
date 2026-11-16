@@ -26,7 +26,7 @@ function scene({ rejectSave = false } = {}) {
     groupOrderState:{},domainGroups:['a','b','c'].map(domain=>({domain})),
     saveGroupOrder:async state=>{if(rejectSave)throw Error('quota');saves.push(state);},
     showToast:message=>messages.push(message),queueRenderDashboard:()=>{renders++;} });
-  vm.runInContext(fs.readFileSync(path.join(__dirname,'card-drag.js'),'utf8'),context);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../src/card-drag.js'),'utf8'),context);
   const fire=async(name,overrides={})=>{handlers[name]({target:list.children[0],button:0,pointerId:1,clientX:30,clientY:30,preventDefault(){},stopImmediatePropagation(){},...overrides});for(let i=0;i<15;i++)await Promise.resolve();};
   return {list,fire,context,saves,messages,order:()=>list.children.map(item=>item.dataset.groupId).filter(Boolean),renders:()=>renders};
 }
