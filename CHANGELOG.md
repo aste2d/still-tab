@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add an optional Buy me a coffee link to the About page.
+
 ## 2.1.4 — 2026-11-16
 
 - Rename the extension to Still Tab and the GitHub repository to `still-tab`.

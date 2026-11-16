@@ -1,6 +1,6 @@
 {
   "name": "still-tab",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "private": true,
   "description": "A clean Chrome new tab that stays out of your way.",
   "license": "MIT",
