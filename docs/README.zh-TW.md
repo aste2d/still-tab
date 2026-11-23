@@ -6,6 +6,8 @@
 
 [回報問題](https://github.com/aste2d/still-tab/issues) · [隱私權政策](https://astab-privacy.poodle11215.chatgpt.site)
 
+![Still Tab 首頁](01-home.png)
+
 ## 安裝
 
 [![從 Chrome 線上應用程式商店安裝](https://developer.chrome.com/static/docs/webstore/branding/image/206x58-chrome-web-bcb82d15b2486.png)](https://chromewebstore.google.com/detail/still-tab/ifdkabkkiadgmdpbaijgcmcaeledkdci)
@@ -25,8 +27,6 @@
 更新手動安裝版時，把新版檔案覆蓋到**原本的同一個資料夾**。在現有的 Still Tab（原名 astab）擴充功能上按一下**重新載入**，再重新整理或重新開啟新分頁。沿用同一個資料夾可保留擴充功能的識別碼及本機資料。移除擴充功能會清除其本機資料。Chrome 書籤由瀏覽器另外管理。商店版使用不同的擴充功能識別碼，手動安裝版的本機資料不會自動移轉。
 
 </details>
-
-![Still Tab 首頁](01-home.png)
 
 ## 功能
 

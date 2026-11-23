@@ -6,6 +6,8 @@ Chrome の新しいタブをすっきりとした作業スペースに。開い�
 
 [問題を報告](https://github.com/aste2d/still-tab/issues) · [プライバシーポリシー](https://astab-privacy.poodle11215.chatgpt.site)
 
+![Still Tab のホーム画面](01-home.png)
+
 ## インストール
 
 [![Chrome ウェブストアからインストール](https://developer.chrome.com/static/docs/webstore/branding/image/206x58-chrome-web-bcb82d15b2486.png)](https://chromewebstore.google.com/detail/still-tab/ifdkabkkiadgmdpbaijgcmcaeledkdci)
@@ -25,8 +27,6 @@ Chrome の新しいタブをすっきりとした作業スペースに。開い�
 手動インストール版を更新するには、新しいファイルを**元と同じフォルダー**に上書きします。既存の Still Tab（旧名 astab）で**再読み込み**をクリックし、新規タブページを読み込み直します。同じフォルダーを使うと拡張機能の ID とローカルデータを維持できます。拡張機能を削除すると、そのローカルデータも削除されます。Chrome のブックマークは別に管理されます。ストア版は拡張機能の ID が異なり、手動インストール版のローカルデータは自動で引き継がれません。
 
 </details>
-
-![Still Tab のホーム画面](01-home.png)
 
 ## 機能
 

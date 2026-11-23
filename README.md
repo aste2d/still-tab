@@ -6,6 +6,8 @@ A clean new tab that stays out of your way. By [aste2d](https://github.com/aste2
 
 [Report an issue](https://github.com/aste2d/still-tab/issues) · [Privacy policy](https://astab-privacy.poodle11215.chatgpt.site)
 
+![Still Tab homepage](docs/01-home.png)
+
 ## Install
 
 [![Install from the Chrome Web Store](https://developer.chrome.com/static/docs/webstore/branding/image/206x58-chrome-web-bcb82d15b2486.png)](https://chromewebstore.google.com/detail/still-tab/ifdkabkkiadgmdpbaijgcmcaeledkdci)
@@ -25,8 +27,6 @@ Requires **Chrome 134 or newer**. Select **Add to Chrome** and confirm. Open a n
 To update a manually installed copy, extract the new release and copy its files into the **same folder**. Click **Reload** on the existing Still Tab extension (previously named astab), then refresh the new-tab page or open a new one. Reusing the same folder keeps the extension identity and local data. Uninstalling clears the extension’s local data. Chrome manages bookmarks separately. The store version uses a separate extension ID and does not automatically import data from an unpacked installation.
 
 </details>
-
-![Still Tab homepage](docs/01-home.png)
 
 ## Features
 

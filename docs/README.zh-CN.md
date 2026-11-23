@@ -6,6 +6,8 @@
 
 [反馈问题](https://github.com/aste2d/still-tab/issues) · [隐私政策](https://astab-privacy.poodle11215.chatgpt.site)
 
+![Still Tab 主页](01-home.png)
+
 ## 安装
 
 [![从 Chrome 应用商店安装](https://developer.chrome.com/static/docs/webstore/branding/image/206x58-chrome-web-bcb82d15b2486.png)](https://chromewebstore.google.com/detail/still-tab/ifdkabkkiadgmdpbaijgcmcaeledkdci)
@@ -25,8 +27,6 @@
 更新手动安装版时，把新版文件覆盖到**原来的同一个文件夹**。在已有的 Still Tab（原名 astab）扩展上点击**重新加载**，然后刷新或重新打开新标签页。沿用同一文件夹可以保留扩展身份和本地数据。卸载会清除扩展的本地数据。Chrome 书签由浏览器单独管理。商店版的扩展 ID 不同，手动安装版的本地数据不会自动迁移。
 
 </details>
-
-![Still Tab 主页](01-home.png)
 
 ## 功能
 
