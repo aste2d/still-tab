@@ -4,17 +4,18 @@
 
 簡潔的 Chrome 新分頁。左側整理開啟的分頁，右側提供搜尋和書籤，側邊收納待辦事項、筆記和番茄鐘。
 
-**[從 Chrome 線上應用程式商店安裝](https://chromewebstore.google.com/detail/still-tab/ifdkabkkiadgmdpbaijgcmcaeledkdci)** · [回報問題](https://github.com/aste2d/still-tab/issues) · [隱私權政策](https://astab-privacy.poodle11215.chatgpt.site)
-
-![Still Tab 首頁](01-home.png)
+[回報問題](https://github.com/aste2d/still-tab/issues) · [隱私權政策](https://astab-privacy.poodle11215.chatgpt.site)
 
 ## 安裝
 
-需要 **Chrome 134 或更新版本**。開啟 [Chrome 線上應用程式商店頁面](https://chromewebstore.google.com/detail/still-tab/ifdkabkkiadgmdpbaijgcmcaeledkdci)，按一下**加到 Chrome**並確認。接著開啟新分頁。如果 Chrome 詢問是否保留新分頁的變更，請選擇保留。商店版由 Chrome 自動更新。
+[![從 Chrome 線上應用程式商店安裝](https://developer.chrome.com/static/docs/webstore/branding/image/206x58-chrome-web-bcb82d15b2486.png)](https://chromewebstore.google.com/detail/still-tab/ifdkabkkiadgmdpbaijgcmcaeledkdci)
 
-**預設開啟「自動關閉多餘的新分頁」。** 開啟新分頁時，所有視窗中其他的新分頁會關閉，包括已釘選的新分頁。一般網頁會保持開啟。若想保留多個新分頁，可在 Still Tab 的設定中關閉此選項。
+需要 **Chrome 134 或更新版本**。按一下**加到 Chrome**並確認，再開啟新分頁。如果 Chrome 詢問是否保留變更，請選擇保留。商店版由 Chrome 自動更新。
 
-### 從 GitHub 手動安裝
+## 如果無法從 Chrome 線上應用程式商店安裝
+
+<details>
+<summary>從 GitHub 手動安裝</summary>
 
 1. 從 [GitHub Releases](https://github.com/aste2d/still-tab/releases/latest) 下載 `still-tab-版本號.zip`。若要使用最新開發版，也可[下載原始碼 ZIP](https://github.com/aste2d/still-tab/archive/refs/heads/main.zip)。兩者都可直接載入，無須編譯。
 2. 解壓縮到打算長期保留的資料夾。
@@ -23,7 +24,13 @@
 
 更新手動安裝版時，把新版檔案覆蓋到**原本的同一個資料夾**。在現有的 Still Tab（原名 astab）擴充功能上按一下**重新載入**，再重新整理或重新開啟新分頁。沿用同一個資料夾可保留擴充功能的識別碼及本機資料。移除擴充功能會清除其本機資料。Chrome 書籤由瀏覽器另外管理。商店版使用不同的擴充功能識別碼，手動安裝版的本機資料不會自動移轉。
 
+</details>
+
+![Still Tab 首頁](01-home.png)
+
 ## 功能
+
+**預設開啟「自動關閉多餘的新分頁」。** 開啟新分頁時，所有視窗中其他的新分頁會關閉，包括已釘選的新分頁。一般網頁會保持開啟。若想保留多個新分頁，可在 Still Tab 的設定中關閉此選項。
 
 - 分頁按網站分組。拖曳卡片空白處或標題文字可調整順序，也可個別複製分頁標題。
 - 書籤保留 Chrome 原有順序，支援瀏覽資料夾、返回上層和跨資料夾搜尋。「顯示所有書籤」預設關閉，只顯示書籤列。開啟後可查看其餘書籤根目錄。
